@@ -9,7 +9,7 @@ import java.net.URL;
 public class WebhookTest {
 
     public static void main(String[] args) {
-        String url = "http://192.168.8.103:8080/TradingViewAlerts/alerts"; // Replace with your webhook's IP address
+        String url = "http://155.133.23.59:8080/TradingViewAlerts/alerts"; // Replace with your webhook's IP address
         String payload = "{'symbol':'AAPL', 'price':123.45}"; // Replace with your payload data
         try {
             URL obj = new URL(url);
