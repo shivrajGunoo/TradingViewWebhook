@@ -16,16 +16,19 @@ public class WebhookApp {
 	private static final Logger log = Logger.getLogger(WebhookApp.class.getName());
 
     public static void main(String[] args) {
-        String ipAddress = "155.133.23.59"; // Replace with your IP address
-        SpringApplication app = new SpringApplication(WebhookApp.class);
-        app.setDefaultProperties(Collections.singletonMap("server.address", ipAddress));
-        app.run(args);
+    	String ipAddress = "155.133.23.59"; // Replace with your IP address
+    	int port = 80; // Set the port number to 80
+    	SpringApplication app = new SpringApplication(WebhookApp.class);
+    	app.setDefaultProperties(Collections.singletonMap("server.address", ipAddress));
+    	app.setDefaultProperties(Collections.singletonMap("server.port", port));
+    	app.run(args);
     }
 
     @PostMapping("/TradingViewAlerts/alerts")
     public String receiveWebhook(@RequestBody String payload) {
         // Handle the payload here
-    	log.info("Received payload: " + payload);
+    	System.out.println("Payload recevied");
+    	System.out.println("Received payload: " + payload);
         return "Webhook received";
     }
 }
