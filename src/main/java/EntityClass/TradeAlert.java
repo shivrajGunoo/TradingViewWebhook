@@ -1,157 +1,85 @@
 package EntityClass;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import java.time.LocalDateTime;
 
 public class TradeAlert {
-	private String type;
-	private String title;
-	private Body body;
+    @JsonProperty("orderId")
+    private String orderId;
 
-	public String getType() {
-		return type;
-	}
+    @JsonProperty("side")
+    private String side;
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    @JsonProperty("time")
+    private LocalDateTime time;
 
-	public String getTitle() {
-		return title;
-	}
+    @JsonProperty("symbol")
+    private String symbol;
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    @JsonProperty("action")
+    private String action;
 
-	public Body getBody() {
-		return body;
-	}
+    @JsonProperty("price")
+    private double price;
 
-	public void setBody(Body body) {
-		this.body = body;
-	}
+    @JsonProperty("contracts")
+    private double contracts;
 
-	public static class Body {
-		private String contract;
-		private String price;
-		private String type;
-		private OpeningTrade openingTrade;
-		private ClosingTrade closingTrade;
-		private String marketPosition;
-		private String quantityBought;
+    public TradeAlert() {}
 
-		public String getContract() {
-			return contract;
-		}
+    public String getOrderId() {
+        return orderId;
+    }
 
-		public void setContract(String contract) {
-			this.contract = contract;
-		}
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
 
-		public String getPrice() {
-			return price;
-		}
+    public String getSide() {
+        return side;
+    }
 
-		public void setPrice(String price) {
-			this.price = price;
-		}
+    public void setSide(String side) {
+        this.side = side;
+    }
 
-		public String getType() {
-			return type;
-		}
+    public LocalDateTime getTime() {
+        return time;
+    }
 
-		public void setType(String type) {
-			this.type = type;
-		}
+    public void setTime(LocalDateTime time) {
+        this.time = time;
+    }
 
-		public OpeningTrade getOpeningTrade() {
-			return openingTrade;
-		}
+    public String getSymbol() {
+        return symbol;
+    }
 
-		public void setOpeningTrade(OpeningTrade openingTrade) {
-			this.openingTrade = openingTrade;
-		}
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
 
-		public ClosingTrade getClosingTrade() {
-			return closingTrade;
-		}
+    public String getAction() {
+        return action;
+    }
 
-		public void setClosingTrade(ClosingTrade closingTrade) {
-			this.closingTrade = closingTrade;
-		}
+    public void setAction(String action) {
+        this.action = action;
+    }
 
-		public String getMarketPosition() {
-			return marketPosition;
-		}
+    public double getPrice() {
+        return price;
+    }
 
-		public void setMarketPosition(String marketPosition) {
-			this.marketPosition = marketPosition;
-		}
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
-		public String getQuantityBought() {
-			return quantityBought;
-		}
+    public double getContracts() {
+        return contracts;
+    }
 
-		public void setQuantityBought(String quantityBought) {
-			this.quantityBought = quantityBought;
-		}
-	}
-
-	public static class OpeningTrade {
-		private String price;
-		private String quantityBought;
-		private String orderId;
-
-		public String getPrice() {
-			return price;
-		}
-
-		public void setPrice(String price) {
-			this.price = price;
-		}
-
-		public String getQuantityBought() {
-			return quantityBought;
-		}
-
-		public void setQuantityBought(String quantityBought) {
-			this.quantityBought = quantityBought;
-		}
-
-		public String getOrderId() {
-			return orderId;
-		}
-
-		public void setOrderId(String orderId) {
-			this.orderId = orderId;
-		}
-	}
-
-	public static class ClosingTrade {
-		private String price;
-		private String quantityBought;
-		private String orderId;
-
-		public String getPrice() {
-			return price;
-		}
-
-		public void setPrice(String price) {
-			this.price = price;
-		}
-
-		public String getQuantityBought() {
-			return quantityBought;
-		}
-
-		public void setQuantityBought(String quantityBought) {
-			this.quantityBought = quantityBought;
-		}
-
-		public String getOrderId() {
-			return orderId;
-		}
-
-		public void setOrderId(String orderId) {
-			this.orderId = orderId;
-		}
-	}
+    public void setContracts(double contracts) {
+        this.contracts = contracts;
+    }
+    
 }
