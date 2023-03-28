@@ -1,6 +1,7 @@
 package EntityClass;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 public class TradeAlert {
     @JsonProperty("orderId")
@@ -10,7 +11,7 @@ public class TradeAlert {
     private String side;
 
     @JsonProperty("time")
-    private LocalDateTime time;
+    private OffsetDateTime time;
 
     @JsonProperty("symbol")
     private String symbol;
@@ -26,60 +27,71 @@ public class TradeAlert {
 
     public TradeAlert() {}
 
-    public String getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(String orderId) {
+    public TradeAlert(String orderId, String side, OffsetDateTime time, String symbol, String action, double price, double contracts) {
         this.orderId = orderId;
-    }
-
-    public String getSide() {
-        return side;
-    }
-
-    public void setSide(String side) {
         this.side = side;
-    }
-
-    public LocalDateTime getTime() {
-        return time;
-    }
-
-    public void setTime(LocalDateTime time) {
         this.time = time;
-    }
-
-    public String getSymbol() {
-        return symbol;
-    }
-
-    public void setSymbol(String symbol) {
         this.symbol = symbol;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public void setAction(String action) {
         this.action = action;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
         this.price = price;
-    }
-
-    public double getContracts() {
-        return contracts;
-    }
-
-    public void setContracts(double contracts) {
         this.contracts = contracts;
     }
+
+	public String getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+
+	public String getSide() {
+		return side;
+	}
+
+	public void setSide(String side) {
+		this.side = side;
+	}
+
+	public OffsetDateTime getTime() {
+		return time;
+	}
+
+	public void setTime(OffsetDateTime time) {
+		this.time = time;
+	}
+
+	public String getSymbol() {
+		return symbol;
+	}
+
+	public void setSymbol(String symbol) {
+		this.symbol = symbol;
+	}
+
+	public String getAction() {
+		return action;
+	}
+
+	public void setAction(String action) {
+		this.action = action;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public double getContracts() {
+		return contracts;
+	}
+
+	public void setContracts(double contracts) {
+		this.contracts = contracts;
+	}
+
     
 }

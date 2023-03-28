@@ -6,8 +6,11 @@ import java.util.logging.Logger;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
@@ -25,7 +28,7 @@ public class WebhookApp {
 	private static String marketPositionIndicator = null;
 	
     public static void main(String[] args) {
-    	String ipAddress = "192.168.8.103"; // Replace with your IP address
+    	String ipAddress = "155.133.23.59"; // Replace with your IP address
     	int port = 8080; // Set the port number to 80
     	SpringApplication app = new SpringApplication(WebhookApp.class);
     	app.setDefaultProperties(Collections.singletonMap("server.address", ipAddress));
@@ -33,23 +36,17 @@ public class WebhookApp {
     	app.run(args);
     }
 
-    @PostMapping("/TradingViewAlerts/alerts")
+    @RequestMapping(path = "/TradingViewAlerts/alerts", method = RequestMethod.POST, consumes = MediaType.ALL_VALUE, produces = "text/plain")
     public String receiveWebhook(@RequestBody String payload) {
         // Handle the payload here
-    	System.out.println("Payload recevied");
-    	System.out.println("Received payload: " + payload);
+    	//System.out.println("Payload recevied");
+    	//System.out.println("Received payload: " + payload);
     	
     	gson = new Gson();
         TradeAlert tradeAlert = gson.fromJson(payload, TradeAlert.class);
+        checkAlert(tradeAlert);
         return "Webhook received";
     }
-    
-	/*
-	 * // Open new Trade with changed position and update alertChangeIndicator
-	 * alertChangeIndicator = order.substring(0,1);
-	 * 
-	 * //Open new Trade
-	 */    
     
     // The function parameter should change to an object of Trade
     public static void checkAlert(TradeAlert order) {
@@ -84,8 +81,8 @@ public class WebhookApp {
     			// Add new order as first element in the Trade list
     			trades.add(order);
     			
-    			// Remove Trade From existing Active Trade List
-    			trades.remove(0);
+//    			// Remove Trade From existing Active Trade List
+//    			trades.remove(0);
 
     			// Open new Trade
     			openTrade(order);
