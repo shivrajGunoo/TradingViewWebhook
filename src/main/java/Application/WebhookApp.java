@@ -7,13 +7,13 @@ import java.util.logging.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
+
 import EntityClass.TradeAlert;
 
 
@@ -28,7 +28,7 @@ public class WebhookApp {
 	private static String marketPositionIndicator = null;
 	
     public static void main(String[] args) {
-    	String ipAddress = "155.133.23.59"; // Replace with your IP address
+    	String ipAddress = "192.168.100.36"; // Replace with your IP address
     	int port = 8080; // Set the port number to 80
     	SpringApplication app = new SpringApplication(WebhookApp.class);
     	app.setDefaultProperties(Collections.singletonMap("server.address", ipAddress));
@@ -43,19 +43,22 @@ public class WebhookApp {
     	//System.out.println("Received payload: " + payload);
     	
     	gson = new Gson();
+    	System.out.println(payload);
         TradeAlert tradeAlert = gson.fromJson(payload, TradeAlert.class);
         checkAlert(tradeAlert);
+        System.out.println(tradeAlert.getContracts());
+        
         return "Webhook received";
     }
     
     // The function parameter should change to an object of Trade
     public static void checkAlert(TradeAlert order) {
     	
-    	if(marketPositionIndicator.isBlank()) {
+    	if(marketPositionIndicator == null) {
     		marketPositionIndicator = order.getOrderId().substring(0,1);
     	}
     	
-    	if(order.getOrderId().substring(0,1) == "L" || order.getOrderId().substring(0,1) == "S") {
+    	if(order.getOrderId().substring(0,1).equals("L") || order.getOrderId().substring(0,1).equals("S") ) {
     		// Check if there is a change in the direction
     		if(marketPositionIndicator.equals(order.getOrderId().substring(0,1))) {
     			//Open new Trade 

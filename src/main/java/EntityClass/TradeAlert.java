@@ -1,7 +1,8 @@
 package EntityClass;
 
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.time.OffsetDateTime;
 
 public class TradeAlert {
     @JsonProperty("orderId")
@@ -10,8 +11,8 @@ public class TradeAlert {
     @JsonProperty("side")
     private String side;
 
-    @JsonProperty("time")
-    private OffsetDateTime time;
+    //@JsonProperty("time")
+    private Date time_;
 
     @JsonProperty("symbol")
     private String symbol;
@@ -27,10 +28,10 @@ public class TradeAlert {
 
     public TradeAlert() {}
 
-    public TradeAlert(String orderId, String side, OffsetDateTime time, String symbol, String action, double price, double contracts) {
+    public TradeAlert(String orderId, String side, Date time, String symbol, String action, double price, double contracts) {
         this.orderId = orderId;
         this.side = side;
-        this.time = time;
+        this.time_ = time;
         this.symbol = symbol;
         this.action = action;
         this.price = price;
@@ -53,12 +54,12 @@ public class TradeAlert {
 		this.side = side;
 	}
 
-	public OffsetDateTime getTime() {
-		return time;
+	public Date getTime() {
+		return time_;
 	}
 
-	public void setTime(OffsetDateTime time) {
-		this.time = time;
+	public void setTime(Date time) {
+		this.time_ = time;
 	}
 
 	public String getSymbol() {
